@@ -68,6 +68,8 @@ class CreateCategory(graphene.Mutation):
         featured = graphene.Boolean()
         description = graphene.String()
 
+    category = graphene.Field(CategoryType)
+
     def mutate(self, info, name, status, featured, description):
         category = Category(name=name, status=status, featured=featured, description=description)
         category.save()
@@ -84,6 +86,8 @@ class CreateFood(graphene.Mutation):
         status = graphene.Boolean()
         veg = graphene.Boolean()
         description = graphene.String()
+
+    food = graphene.Field(FoodType)
 
     def mutate(self, info, name, category, sizegroup, status, veg, description):
         food = Food(name=name, category=category, sizegroup=sizegroup, status=status, veg=veg, description=description)
